@@ -2,10 +2,10 @@
 Other random configs that aren't in ESPHome - Home Assistant, Genmon, etc
 
 # Genmon-MQTT YAML
-You can copy and paste the config directly to your configuration.yaml, or you can copy the file itself next to the configuration.yaml and add
+You can either copy and paste the config directly to your configuration.yaml, or you can copy the entire file itself next to the configuration.yaml file and simply add
 ```
 homeassistant:
   packages:
     genmon_mqtt: !include genmon_mqtt.yaml
 ```
-to your configuration.yaml
+to your configuration.yaml.
