@@ -1,0 +1,179 @@
+# To get Genmon sensors direct into Home Assistant, simly add this to your configuration.yaml. If you already have an mqtt: block, just add the sensors part but keep the indentation :)
+mqtt:
+  sensor:
+    - unique_id: "fd8f8c07-7d6f-4aea-92b5-16b7d8acc66b"
+      expire_after: 310
+      state_topic: 'generator/Outage/Status'
+      name: Generator Outage Status
+      
+    - unique_id: "D2F2BA69-7EBE-4B13-AB6E-944E4EC710BB"
+      expire_after: 310
+      state_topic: 'generator/Status/Engine/Engine State'
+      name: Generator Engine State
+      
+    - unique_id: "40160784-7061-4F21-A815-EEF5D1475B91"
+      expire_after: 310
+      state_topic: 'generator/Status/Engine/Switch State'
+      name: Generator Switch State
+ 
+    - unique_id: "f565fed6-8a19-49d4-8066-4015c5ca91b1"
+      expire_after: 310
+      state_topic: 'generator/Status/Line/Utility Voltage'
+      name: Generator Utility Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      value_template: '{{ value | regex_replace(" V", "") | float }}'
+ 
+    - unique_id: "713eb4b9-feec-4425-8c83-84a9f486aae7"
+      expire_after: 310
+      name: Generator Battery Voltage
+      device_class: voltage
+      state_topic: 'generator/Status/Engine/Battery Voltage'
+      unit_of_measurement: "V"
+      value_template: '{{ value | regex_replace(" V", "") | float }}'
+      
+    - unique_id: "B4691EBA-66AC-4C01-8FBA-32FB21553554"
+      expire_after: 310
+      name: Generator Battery Charger
+      device_class: current
+      state_topic: 'generator/Status/Engine/Battery Charger Current'
+      unit_of_measurement: "mA"
+      value_template: '{{ value | regex_replace(" mA", "") | float }}'
+ 
+    - unique_id: "f3a8aedd-206b-4e5f-baa9-677496ee8d3c"
+      expire_after: 310
+      name: Generator RPM
+      unit_of_measurement: "RPM"
+      state_topic: 'generator/Status/Engine/RPM'
+      value_template: '{{ value | int }}'
+ 
+    - unique_id: "cbdc9c28-5748-4aef-91bc-5b5ec95ed545"
+      expire_after: 310
+      name: Generator Frequency
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      state_topic: 'generator/Status/Engine/Frequency'
+      value_template: '{{ value | regex_replace(" Hz","") | float }}'
+ 
+    - unique_id: "f5f462db-e16d-4596-9bd3-232b70fa5038"
+      expire_after: 310
+      name: Generator Output Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      state_topic: 'generator/Status/Engine/Output Voltage'
+      value_template: '{{ value | regex_replace(" V","") | float }}'
+ 
+    - unique_id: "10e1def6-35fd-4922-932a-90f25abb7f29"
+      expire_after: 310
+      name: Generator Output Current
+      device_class: current
+      unit_of_measurement: "A"
+      state_topic: 'generator/Status/Engine/Output Current'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      
+    - unique_id: "254AB0C2-6E0F-4E9F-9867-6DC0B90A0D17"
+      name: Generator Fuel 30d
+      #device_class: gas
+      unit_of_measurement: "ft³"
+      state_topic: 'generator/Maintenance/Fuel Consumption in last 30 days'
+      value_template: '{{ value | regex_replace(" cubic feet","") | float }}'
+      
+    - unique_id: "6402907C-A181-4D73-947E-8179AFBAB3DD"
+      name: Generator kWh 30d
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_topic: 'generator/Maintenance/kW Hours in last 30 days'
+      value_template: '{{ value | regex_replace(" kWh","") | float }}'
+ 
+    - unique_id: "914a4e97-54a0-41e7-bbeb-a256134e5e35"
+      expire_after: 310
+      name: Generator Output Power
+      device_class: power
+      unit_of_measurement: "kW"
+      state_topic: 'generator/Status/Engine/Output Power (Single Phase)'
+      value_template: '{{ value | regex_replace(" kW","") | float }}'
+ 
+    - unique_id: "8cb64471-9123-48f6-b9be-15c01595981e"
+      name: Generator Last Alarm Log
+      state_topic: 'generator/Status/Last Log Entries/Logs/Alarm Log'
+ 
+    - unique_id: "bce3182a-a525-47dc-937c-8be4e5afc619"
+      expire_after: 310
+      name: Generator Last Service Log
+      state_topic: 'generator/Status/Last Log Entries/Logs/Service Log'
+ 
+    - unique_id: "bf48e972-0b96-489a-9eee-4f2030017c3f"
+      expire_after: 310
+      name: Generator Last Action
+      state_topic: 'generator/Status/Last Log Entries/Logs/Run Log'
+ 
+    - unique_id: "825657b6-c67a-427a-bee9-7b6ea2182628"
+      expire_after: 310
+      name: Generator Exercise Time
+      state_topic: 'generator/Maintenance/Exercise/Exercise Time'
+      
+    - unique_id: "DF3640D2-D7F0-417A-ABD5-1302872E5B52"
+      expire_after: 310
+      name: Generator Activation Time
+      state_topic: 'generator/Maintenance/Controller Settings/Time Since Activation'
+      
+    - unique_id: "5D27A91F-45E0-493E-83AC-054750B7CC2F"
+      expire_after: 310
+      name: Generator Engine Runtime 30d
+      device_class: duration
+      unit_of_measurement: "h"
+      state_topic: 'generator/Maintenance/Run Hours in last 30 days'
+      value_template: '{{ value | regex_replace(" h","") | float }}'
+      
+    - unique_id: "01715416-D302-4369-A89F-DD9F9A22E28A"
+      name: Generator Total Engine Runtime
+      device_class: duration
+      unit_of_measurement: "h"
+      state_topic: 'generator/Maintenance/Service/Total Run Hours'
+      value_template: '{{ value | regex_replace(" h","") | float }}'
+      
+    - unique_id: "68ADE9C0-7621-4A0F-B4FC-744B2F186434"
+      expire_after: 310
+      name: Generator Ambient Temperature
+      unit_of_measurement: "°F"
+      device_class: temperature
+      state_topic: 'generator/Maintenance/Ambient Temperature Sensor'
+      value_template: '{{ value | regex_replace("F","") | float }}'
+ 
+    - unique_id: "792c8096-84a3-4870-ac23-8cc5dcc8f8f0"
+      expire_after: 310
+      name: Genmon CPU Temperature
+      unit_of_measurement: "°F"
+      device_class: temperature
+      state_topic: 'generator/Monitor/Platform Stats/CPU Temperature'
+      value_template: '{{ value | regex_replace("F","") | float }}'
+ 
+    - unique_id: "825657b6-c67a-427a-bee9-7b6ea2181001"
+      name: Genmon Version
+      state_topic: 'generator/Monitor/Generator Monitor Stats/Generator Monitor Version'
+ 
+    - unique_id: "60b44a17-2535-47da-af10-7f6b45d35d3a"
+      expire_after: 600
+      name: Genmon CPU Load
+      unit_of_measurement: '%'
+      state_topic: 'generator/Monitor/Platform Stats/CPU Utilization'
+      value_template: '{{ value | regex_replace(" *%","") | float }}'
+ 
+    - unique_id: "3CDB1BB5-9F4F-4D6D-922C-D00EC9C27B7A"
+      state_topic: "generator/Monitor/Platform Stats/WLAN Signal Level"
+      expire_after: 310
+      name: "Genmon WLAN Signal Level"
+      value_template: '{{ value | regex_replace(" dBm", "") | float }}'
+      unit_of_measurement: dBm
+      device_class: signal_strength
+      
+    - unique_id: "D5EDE9D5-9424-4730-BDDA-DC5D0DD90AB2"
+      state_topic: "generator/Monitor/Platform Stats/WLAN ESSID"
+      expire_after: 310
+      name: "Genmon WLAN SSID"
+ 
+# Commented to reduce DB writes from this contantly updating sensor 
+#    - unique_id: "7c398cb0-43bf-469b-b49f-ae8b526cac32"
+#      expire_after: 300
+#      name: Genmon Uptime
+#      state_topic: 'generator/Monitor/Platform Stats/System Uptime'
