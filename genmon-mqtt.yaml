@@ -50,6 +50,7 @@ mqtt:
       state_topic: 'generator/Status/Engine/Battery Voltage'
       unit_of_measurement: "V"
       value_template: '{{ value | regex_replace(" V", "") | float }}'
+      icon: mdi:car-battery
       device:
         name: "Generator"
         identifiers:
@@ -113,6 +114,42 @@ mqtt:
         name: "Generator"
         identifiers:
           - "generator_device"
+          
+    - unique_id: "6E13E145-4F86-4488-BA27-D6B088BDA6E8"
+      expire_after: 310
+      name: Current L1
+      device_class: current
+      unit_of_measurement: "A"
+      state_topic: 'generator/Status/Engine/Current L1'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+          
+    - unique_id: "AB3069E0-5C4E-4A57-983B-037B74D383D7"
+      expire_after: 310
+      name: Current L2
+      device_class: current
+      unit_of_measurement: "A"
+      state_topic: 'generator/Status/Engine/Current L2'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+          
+    - unique_id: "914a4e97-54a0-41e7-bbeb-a256134e5e35"
+      expire_after: 310
+      name: Output Power
+      device_class: power
+      unit_of_measurement: "kW"
+      state_topic: 'generator/Status/Engine/Output Power (Single Phase)'
+      value_template: '{{ value | regex_replace(" kW","") | float }}'
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
       
     - unique_id: "254AB0C2-6E0F-4E9F-9867-6DC0B90A0D17"
       name: Fuel 30d
@@ -131,18 +168,6 @@ mqtt:
       unit_of_measurement: "kWh"
       state_topic: 'generator/Maintenance/kW Hours in last 30 days'
       value_template: '{{ value | regex_replace(" kWh","") | float }}'
-      device:
-        name: "Generator"
-        identifiers:
-          - "generator_device"
- 
-    - unique_id: "914a4e97-54a0-41e7-bbeb-a256134e5e35"
-      expire_after: 310
-      name: Output Power
-      device_class: power
-      unit_of_measurement: "kW"
-      state_topic: 'generator/Status/Engine/Output Power (Single Phase)'
-      value_template: '{{ value | regex_replace(" kW","") | float }}'
       device:
         name: "Generator"
         identifiers:
@@ -231,6 +256,39 @@ mqtt:
         name: "Generator"
         identifiers:
           - "generator_device"
+          
+    - unique_id: "F021C240-F53E-4CF3-BDF8-96F663BB6A5B"
+      expire_after: 310
+      state_topic: 'generator/Maintenance/Service/Service A Due'
+      name: Service A Due
+      icon: mdi:tools
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+        
+    - unique_id: "D516C5BF-6003-4A73-A190-6C2FD386B252"
+      expire_after: 310
+      state_topic: 'generator/Maintenance/Service/Service B Due'
+      name: Service B Due
+      icon: mdi:tools
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+        
+    - unique_id: "79B70A02-3ED5-4570-9600-6E4F2DF3373A"
+      expire_after: 310
+      state_topic: 'generator/Maintenance/Service/Battery Check Due'
+      name: Battery Check Due
+      icon: mdi:car-battery
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
  
     - unique_id: "792c8096-84a3-4870-ac23-8cc5dcc8f8f0"
       expire_after: 310
@@ -283,6 +341,26 @@ mqtt:
       expire_after: 310
       name: WLAN SSID
       icon: mdi:wifi-settings
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - unique_id: "C56D7C2F-800F-4B5D-9974-D06A4F161EFD"
+      state_topic: "generator/Monitor/Communication Stats/CRC Errors"
+      expire_after: 310
+      name: CRC Errors
+      icon: mdi:alert-circle-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - unique_id: "409F9C99-45C8-4988-BDD7-1BC48DF3C8C9"
+      state_topic: "generator/Monitor/Communication Stats/Sync Errors"
+      expire_after: 310
+      name: Sync Errors
+      icon: mdi:sync-alert
       device:
         name: "Genmon"
         identifiers:
