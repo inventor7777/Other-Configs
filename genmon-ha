@@ -125,6 +125,18 @@ mqtt:
         name: "Generator"
         identifiers:
           - "generator_device"
+          
+    - name: Load Imbalance
+      unique_id: "066A292B-5DD2-4531-A6A8-A4AF5A733BAC"
+      state_topic: 'generator/Status/Engine/Experimental Sensors/Load Imbalance'
+      value_template: '{{ value | regex_replace(" %","") | float }}'
+      expire_after: 310
+      unit_of_measurement: "%"
+      icon: mdi:scale-unbalanced
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
 
     - name: Fuel 30d
       unique_id: "254AB0C2-6E0F-4E9F-9867-6DC0B90A0D17"
@@ -191,6 +203,17 @@ mqtt:
     - name: Outage Status
       unique_id: "fd8f8c07-7d6f-4aea-92b5-16b7d8acc66b"
       state_topic: 'generator/Outage/Status'
+      expire_after: 310
+      icon: mdi:weather-lightning
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+        
+    - name: System in Outage
+      unique_id: "C219B25F-84C2-409D-AB74-990DE3A8DF7E"
+      state_topic: 'generator/Outage/System In Outage'
       expire_after: 310
       icon: mdi:weather-lightning
       device:
@@ -373,11 +396,85 @@ mqtt:
         name: "Genmon"
         identifiers:
           - "genmon_device"
+          
+    - name: Timeout Errors
+      unique_id: "30970227-14CE-4AD0-9974-DFEAC32308A7"
+      state_topic: "generator/Monitor/Communication Stats/Timeout Errors"
+      expire_after: 310
+      unit_of_measurement: 'errors'
+      icon: mdi:clock-alert-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Validation Errors
+      unique_id: "38AF3FCD-374A-4650-80BD-F14211AC9779"
+      state_topic: "generator/Monitor/Communication Stats/Validation Errors"
+      expire_after: 310
+      unit_of_measurement: 'errors'
+      icon: mdi:folder-alert-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Invalid Data
+      unique_id: "1F3C758F-9B65-4B80-A4AB-61F330E6F527"
+      state_topic: "generator/Monitor/Communication Stats/Invalid Data"
+      expire_after: 310
+      unit_of_measurement: 'errors'
+      icon: mdi:file-alert-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Modbus Exceptions
+      unique_id: "4C6AEC1E-48BA-4CA1-8113-5642BC1B9CFA"
+      state_topic: "generator/Monitor/Communication Stats/Modbus Exceptions"
+      expire_after: 310
+      unit_of_measurement: 'exceptions'
+      icon: mdi:serial-port
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Pi Undervoltage
+      unique_id: "CFE9D97B-761E-436C-AF57-9594AD0E1FE6"
+      state_topic: "generator/Monitor/Platform Stats/Pi Undervoltage"
+      expire_after: 310
+      icon: mdi:flash-alert-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Health
+      unique_id: "FEEFD77A-4BF9-45FD-8192-A4C2658C88AE"
+      state_topic: "generator/Monitor/Generator Monitor Stats/Monitor Health"
+      expire_after: 310
+      icon: mdi:check-network-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Client Status
+      unique_id: "12A2CA89-632B-41C6-A4AA-D3E3392A1554"
+      state_topic: "generator/client_status"
+      expire_after: 310
+      icon: mdi:wifi-sync
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
 
     - name: Version
       unique_id: "825657b6-c67a-427a-bee9-7b6ea2181001"
       state_topic: 'generator/Monitor/Generator Monitor Stats/Generator Monitor Version'
-      icon: mdi:tag-text
+      icon: mdi:tag-text-outline
       device:
         name: "Genmon"
         identifiers:
