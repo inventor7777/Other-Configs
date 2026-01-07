@@ -1,0 +1,394 @@
+mqtt:
+  sensor:
+
+    ############################################################
+    # Generator - Numeric Sensors
+    ############################################################
+
+    - name: Utility Voltage
+      unique_id: "f565fed6-8a19-49d4-8066-4015c5ca91b1"
+      state_topic: 'generator/Status/Line/Utility Voltage'
+      value_template: '{{ value | regex_replace(" V", "") | float }}'
+      expire_after: 310
+      device_class: voltage
+      unit_of_measurement: "V"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Battery Voltage
+      unique_id: "713eb4b9-feec-4425-8c83-84a9f486aae7"
+      state_topic: 'generator/Status/Engine/Battery Voltage'
+      value_template: '{{ value | regex_replace(" V", "") | float }}'
+      expire_after: 310
+      device_class: voltage
+      unit_of_measurement: "V"
+      icon: mdi:car-battery
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Battery Charger
+      unique_id: "B4691EBA-66AC-4C01-8FBA-32FB21553554"
+      state_topic: 'generator/Status/Engine/Battery Charger Current'
+      value_template: '{{ value | regex_replace(" mA", "") | float }}'
+      expire_after: 310
+      device_class: current
+      unit_of_measurement: "mA"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: RPM
+      unique_id: "f3a8aedd-206b-4e5f-baa9-677496ee8d3c"
+      state_topic: 'generator/Status/Engine/RPM'
+      value_template: '{{ value | int }}'
+      expire_after: 310
+      unit_of_measurement: "RPM"
+      icon: mdi:rotate-right
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Frequency
+      unique_id: "cbdc9c28-5748-4aef-91bc-5b5ec95ed545"
+      state_topic: 'generator/Status/Engine/Frequency'
+      value_template: '{{ value | regex_replace(" Hz","") | float }}'
+      expire_after: 310
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Output Voltage
+      unique_id: "f5f462db-e16d-4596-9bd3-232b70fa5038"
+      state_topic: 'generator/Status/Engine/Output Voltage'
+      value_template: '{{ value | regex_replace(" V","") | float }}'
+      expire_after: 310
+      device_class: voltage
+      unit_of_measurement: "V"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Output Current
+      unique_id: "10e1def6-35fd-4922-932a-90f25abb7f29"
+      state_topic: 'generator/Status/Engine/Output Current'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      expire_after: 310
+      device_class: current
+      unit_of_measurement: "A"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Current L1
+      unique_id: "6E13E145-4F86-4488-BA27-D6B088BDA6E8"
+      state_topic: 'generator/Status/Engine/Current L1'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      expire_after: 310
+      device_class: current
+      unit_of_measurement: "A"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Current L2
+      unique_id: "AB3069E0-5C4E-4A57-983B-037B74D383D7"
+      state_topic: 'generator/Status/Engine/Current L2'
+      value_template: '{{ value | regex_replace(" A","") | float }}'
+      expire_after: 310
+      device_class: current
+      unit_of_measurement: "A"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Output Power
+      unique_id: "914a4e97-54a0-41e7-bbeb-a256134e5e35"
+      state_topic: 'generator/Status/Engine/Output Power (Single Phase)'
+      value_template: '{{ value | regex_replace(" kW","") | float }}'
+      expire_after: 310
+      device_class: power
+      unit_of_measurement: "kW"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Fuel 30d
+      unique_id: "254AB0C2-6E0F-4E9F-9867-6DC0B90A0D17"
+      state_topic: 'generator/Maintenance/Fuel Consumption in last 30 days'
+      value_template: '{{ value | regex_replace(" cubic feet","") | float }}'
+      unit_of_measurement: "ft³"
+      icon: mdi:fuel
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: kWh 30d
+      unique_id: "6402907C-A181-4D73-947E-8179AFBAB3DD"
+      state_topic: 'generator/Maintenance/kW Hours in last 30 days'
+      value_template: '{{ value | regex_replace(" kWh","") | float }}'
+      device_class: energy
+      unit_of_measurement: "kWh"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Engine Runtime 30d
+      unique_id: "5D27A91F-45E0-493E-83AC-054750B7CC2F"
+      state_topic: 'generator/Maintenance/Run Hours in last 30 days'
+      value_template: '{{ value | regex_replace(" h","") | float }}'
+      expire_after: 310
+      device_class: duration
+      unit_of_measurement: "h"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Total Engine Runtime
+      unique_id: "01715416-D302-4369-A89F-DD9F9A22E28A"
+      state_topic: 'generator/Maintenance/Service/Total Run Hours'
+      value_template: '{{ value | regex_replace(" h","") | float }}'
+      device_class: duration
+      unit_of_measurement: "h"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Ambient Temperature
+      unique_id: "68ADE9C0-7621-4A0F-B4FC-744B2F186434"
+      state_topic: 'generator/Maintenance/Ambient Temperature Sensor'
+      value_template: '{{ value | regex_replace("F","") | float }}'
+      expire_after: 310
+      device_class: temperature
+      unit_of_measurement: "°F"
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+
+    ############################################################
+    # Generator - Text Sensors
+    ############################################################
+
+    - name: Outage Status
+      unique_id: "fd8f8c07-7d6f-4aea-92b5-16b7d8acc66b"
+      state_topic: 'generator/Outage/Status'
+      expire_after: 310
+      icon: mdi:weather-lightning
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+
+    - name: Engine State
+      unique_id: "D2F2BA69-7EBE-4B13-AB6E-944E4EC710BB"
+      state_topic: 'generator/Status/Engine/Engine State'
+      expire_after: 310
+      icon: mdi:engine
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Switch State
+      unique_id: "40160784-7061-4F21-A815-EEF5D1475B91"
+      state_topic: 'generator/Status/Engine/Switch State'
+      expire_after: 310
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Last Alarm Log
+      unique_id: "8cb64471-9123-48f6-b9be-15c01595981e"
+      state_topic: 'generator/Status/Last Log Entries/Logs/Alarm Log'
+      icon: mdi:alarm-light
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Last Service Log
+      unique_id: "bce3182a-a525-47dc-937c-8be4e5afc619"
+      state_topic: 'generator/Status/Last Log Entries/Logs/Service Log'
+      expire_after: 310
+      icon: mdi:wrench-clock
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Last Action
+      unique_id: "bf48e972-0b96-489a-9eee-4f2030017c3f"
+      state_topic: 'generator/Status/Last Log Entries/Logs/Run Log'
+      expire_after: 310
+      icon: mdi:motion-play-outline
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Exercise Time
+      unique_id: "825657b6-c67a-427a-bee9-7b6ea2182628"
+      state_topic: 'generator/Maintenance/Exercise/Exercise Time'
+      expire_after: 310
+      icon: mdi:refresh-auto
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Activation Time
+      unique_id: "DF3640D2-D7F0-417A-ABD5-1302872E5B52"
+      state_topic: 'generator/Maintenance/Controller Settings/Time Since Activation'
+      expire_after: 310
+      icon: mdi:sort-clock-ascending-outline
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+
+    - name: Service A Due
+      unique_id: "F021C240-F53E-4CF3-BDF8-96F663BB6A5B"
+      state_topic: 'generator/Maintenance/Service/Service A Due'
+      expire_after: 310
+      icon: mdi:tools
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+
+    - name: Service B Due
+      unique_id: "D516C5BF-6003-4A73-A190-6C2FD386B252"
+      state_topic: 'generator/Maintenance/Service/Service B Due'
+      expire_after: 310
+      icon: mdi:tools
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+
+    - name: Battery Check Due
+      unique_id: "79B70A02-3ED5-4570-9600-6E4F2DF3373A"
+      state_topic: 'generator/Maintenance/Service/Battery Check Due'
+      expire_after: 310
+      icon: mdi:car-battery
+      device:
+        name: "Generator"
+        identifiers:
+          - "generator_device"
+        manufacturer: "Genmon"
+
+
+    ############################################################
+    # Genmon - Sensors
+    ############################################################
+
+    - name: CPU Temperature
+      unique_id: "792c8096-84a3-4870-ac23-8cc5dcc8f8f0"
+      state_topic: 'generator/Monitor/Platform Stats/CPU Temperature'
+      value_template: '{{ value | regex_replace("F","") | float }}'
+      expire_after: 310
+      device_class: temperature
+      unit_of_measurement: "°F"
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+        manufacturer: "Genmon"
+
+    - name: CPU Load
+      unique_id: "60b44a17-2535-47da-af10-7f6b45d35d3a"
+      state_topic: 'generator/Monitor/Platform Stats/CPU Utilization'
+      value_template: '{{ value | regex_replace(" *%","") | float }}'
+      expire_after: 600
+      unit_of_measurement: '%'
+      icon: mdi:chip
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+    - name: WLAN Signal Level
+      unique_id: "3CDB1BB5-9F4F-4D6D-922C-D00EC9C27B7A"
+      state_topic: "generator/Monitor/Platform Stats/WLAN Signal Level"
+      value_template: '{{ value | regex_replace(" dBm", "") | float }}'
+      expire_after: 310
+      device_class: signal_strength
+      unit_of_measurement: dBm
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+    - name: WLAN SSID
+      unique_id: "D5EDE9D5-9424-4730-BDDA-DC5D0DD90AB2"
+      state_topic: "generator/Monitor/Platform Stats/WLAN ESSID"
+      expire_after: 310
+      icon: mdi:wifi-settings
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+    - name: CRC Errors
+      unique_id: "C56D7C2F-800F-4B5D-9974-D06A4F161EFD"
+      state_topic: "generator/Monitor/Communication Stats/CRC Errors"
+      expire_after: 310
+      unit_of_measurement: 'errors'
+      icon: mdi:alert-circle-outline
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+    - name: Sync Errors
+      unique_id: "409F9C99-45C8-4988-BDD7-1BC48DF3C8C9"
+      state_topic: "generator/Monitor/Communication Stats/Sync Errors"
+      expire_after: 310
+      unit_of_measurement: 'errors'
+      icon: mdi:sync-alert
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+    - name: Version
+      unique_id: "825657b6-c67a-427a-bee9-7b6ea2181001"
+      state_topic: 'generator/Monitor/Generator Monitor Stats/Generator Monitor Version'
+      icon: mdi:tag-text
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+
+# Commented to reduce DB writes from this contantly updating sensor 
+#    - name: Uptime
+#      unique_id: "7c398cb0-43bf-469b-b49f-ae8b526cac32"
+#      state_topic: 'generator/Monitor/Platform Stats/System Uptime'
+#      expire_after: 300
+#      device:
+#        name: "Genmon"
+#        identifiers:
+#          - "genmon_device"
