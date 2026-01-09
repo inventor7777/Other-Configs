@@ -244,6 +244,7 @@ mqtt:
     - name: Last Alarm Log
       unique_id: "8cb64471-9123-48f6-b9be-15c01595981e"
       state_topic: 'generator/Status/Last Log Entries/Logs/Alarm Log'
+      entity_category: diagnostic
       icon: mdi:alarm-light
       device:
         name: "Generator"
@@ -254,6 +255,7 @@ mqtt:
       unique_id: "bce3182a-a525-47dc-937c-8be4e5afc619"
       state_topic: 'generator/Status/Last Log Entries/Logs/Service Log'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:wrench-clock
       device:
         name: "Generator"
@@ -264,6 +266,7 @@ mqtt:
       unique_id: "bf48e972-0b96-489a-9eee-4f2030017c3f"
       state_topic: 'generator/Status/Last Log Entries/Logs/Run Log'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:motion-play-outline
       device:
         name: "Generator"
@@ -274,6 +277,7 @@ mqtt:
       unique_id: "825657b6-c67a-427a-bee9-7b6ea2182628"
       state_topic: 'generator/Maintenance/Exercise/Exercise Time'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:refresh-auto
       device:
         name: "Generator"
@@ -284,6 +288,7 @@ mqtt:
       unique_id: "DF3640D2-D7F0-417A-ABD5-1302872E5B52"
       state_topic: 'generator/Maintenance/Controller Settings/Time Since Activation'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:sort-clock-ascending-outline
       device:
         name: "Generator"
@@ -294,6 +299,7 @@ mqtt:
       unique_id: "F021C240-F53E-4CF3-BDF8-96F663BB6A5B"
       state_topic: 'generator/Maintenance/Service/Service A Due'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:tools
       device:
         name: "Generator"
@@ -305,6 +311,7 @@ mqtt:
       unique_id: "D516C5BF-6003-4A73-A190-6C2FD386B252"
       state_topic: 'generator/Maintenance/Service/Service B Due'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:tools
       device:
         name: "Generator"
@@ -316,6 +323,7 @@ mqtt:
       unique_id: "79B70A02-3ED5-4570-9600-6E4F2DF3373A"
       state_topic: 'generator/Maintenance/Service/Battery Check Due'
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:car-battery
       device:
         name: "Generator"
@@ -380,6 +388,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/CRC Errors"
       expire_after: 310
       unit_of_measurement: 'errors'
+      entity_category: diagnostic
       icon: mdi:alert-circle-outline
       device:
         name: "Genmon"
@@ -391,6 +400,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/Sync Errors"
       expire_after: 310
       unit_of_measurement: 'errors'
+      entity_category: diagnostic
       icon: mdi:sync-alert
       device:
         name: "Genmon"
@@ -402,6 +412,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/Timeout Errors"
       expire_after: 310
       unit_of_measurement: 'errors'
+      entity_category: diagnostic
       icon: mdi:clock-alert-outline
       device:
         name: "Genmon"
@@ -413,6 +424,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/Validation Errors"
       expire_after: 310
       unit_of_measurement: 'errors'
+      entity_category: diagnostic
       icon: mdi:folder-alert-outline
       device:
         name: "Genmon"
@@ -424,6 +436,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/Invalid Data"
       expire_after: 310
       unit_of_measurement: 'errors'
+      entity_category: diagnostic
       icon: mdi:file-alert-outline
       device:
         name: "Genmon"
@@ -435,6 +448,7 @@ mqtt:
       state_topic: "generator/Monitor/Communication Stats/Modbus Exceptions"
       expire_after: 310
       unit_of_measurement: 'exceptions'
+      entity_category: diagnostic
       icon: mdi:serial-port
       device:
         name: "Genmon"
@@ -445,6 +459,7 @@ mqtt:
       unique_id: "CFE9D97B-761E-436C-AF57-9594AD0E1FE6"
       state_topic: "generator/Monitor/Platform Stats/Pi Undervoltage"
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:flash-alert-outline
       device:
         name: "Genmon"
@@ -455,6 +470,7 @@ mqtt:
       unique_id: "FEEFD77A-4BF9-45FD-8192-A4C2658C88AE"
       state_topic: "generator/Monitor/Generator Monitor Stats/Monitor Health"
       expire_after: 310
+      entity_category: diagnostic
       icon: mdi:check-network-outline
       device:
         name: "Genmon"
@@ -464,8 +480,17 @@ mqtt:
     - name: Client Status
       unique_id: "12A2CA89-632B-41C6-A4AA-D3E3392A1554"
       state_topic: "generator/client_status"
-      expire_after: 310
       icon: mdi:wifi-sync
+      device:
+        name: "Genmon"
+        identifiers:
+          - "genmon_device"
+          
+    - name: Network Interface
+      unique_id: "2F31BBA6-B58A-434F-95D2-6DDD44397977"
+      state_topic: "generator/Monitor/Platform Stats/Network Interface Used"
+      expire_after: 310
+      icon: mdi:router-network-wireless
       device:
         name: "Genmon"
         identifiers:
@@ -474,6 +499,7 @@ mqtt:
     - name: Version
       unique_id: "825657b6-c67a-427a-bee9-7b6ea2181001"
       state_topic: 'generator/Monitor/Generator Monitor Stats/Generator Monitor Version'
+      entity_category: diagnostic
       icon: mdi:tag-text-outline
       device:
         name: "Genmon"
@@ -485,6 +511,7 @@ mqtt:
 #      unique_id: "7c398cb0-43bf-469b-b49f-ae8b526cac32"
 #      state_topic: 'generator/Monitor/Platform Stats/System Uptime'
 #      expire_after: 300
+#.     entity_category: diagnostic
 #      device:
 #        name: "Genmon"
 #        identifiers:
